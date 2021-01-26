@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Amrutanshu</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <style>
+            .checked {
+                color: orange;
+            }   
+
+            body {
+                font-family: 'Noto Sans JP', sans-serif;
+                margin: 0;
+            }
+
+            /* Style the header */
+            .mypage {
+                text-align: center;
+                background-color:	rgb(139, 221, 180);
+            }
+
+            /* border around image */
+            img{
+                border: 5px solid #555;
+            }
+
+            img.rounded-corners {
+                border-radius: 50%;    
+            }
+
+            /* Increase the font size of the h1 element */
+            .about h1 
+            {
+                font-size: 100px;
+            }
+            
+
+            .about h2
+            {
+                font-size: 25px;
+            }
+
+           
+
+            /* Style the top navigation bar */
+            .navbar {
+                overflow: hidden;
+                background-color: #333;
+            }
+
+            /* Style the navigation bar links */
+            .navbar a {
+                float: right;
+                display: block;
+                color: white;
+                text-align: center;
+                padding: 10px 15px;
+                text-decoration: none;
+            }
+
+            /* Right-aligned link */
+            .navbar a.right {
+                float: right;
+            }
+
+            /* Change color on hover */
+            .navbar a:hover {
+                background-color: #ddd;
+                color: black;
+            }
+
+
+        </style>
+        <script>
+            function show(shown, d1, d2) {
+                document.getElementById(shown).style.display='block';
+                document.getElementById(d1).style.display='none';
+                document.getElementById(d2).style.display='none';
+            }
+            function toggle(shown) {
+                if (document.getElementById(shown).style.display=='none') {
+                    document.getElementById(shown).style.display='block'; 
+                } else {
+                    document.getElementById(shown).style.display='none';
+                }
+            }
+        </script>
+    </head>
+    <body  class="mypage">
+        <div>
+            <div class="navbar">
+                <a href="mailto:amrutanshutyagi@gmail.com" style="float: left;">e-mail</a>
+                <a href="https://www.instagram.com/amruxiii/" style="float: left;">instagram</a>
+                <a href="https://www.linkedin.com/in/amrutanshutyagi/" style="float: left;">linkedin<!img src="linkedin.png" width="25px"></a>
+                <a href="#" onclick="show('skills', 'about', 'hobbies');">Skills</a>
+                <a href="#" onclick="show('hobbies', 'about', 'skills');">My Hobbies</a>
+                <a href="#" onclick="show('about', 'skills', 'hobbies');">About Me</a>
+            </div>
+
+            <div id="about">
+                <h2>
+                    <br><br><img src="dsc-1.jpg" width="270px" class="rounded-corners" >
+                </h2>
+                <h1>Amrutanshu Tyagi</h1>
+                <font size=4%> 
+                    <i>   
+                    <p>Hello there, I am a 18yo freshman at NSUT.</p>
+                    <p>I am a Star Wars fan and I love playing chess. </p>
+                </font>
+                    </i>
+            </div>
+
+            
+            <div id="skills" style="display: none;">
+                <h1><b><u><font size=100%>My Skills</font></u></b>
+                </h1>
+                <br><br>
+                <h2>
+                <p>Cricket &nbsp; 
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                </p>
+                <p>Coding   &nbsp;
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star"></span>
+                </p>
+                <p><a href="https://lichess.org/@/radarxy">Chess</a>    &nbsp;
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star"></span>
+                </p>
+                <p>Football &nbsp;
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                </p>
+                <p><a href="https://soundcloud.com/amruxiii">Producing Music</a> &nbsp;
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                </p>
+                 </h2>
+            </div>
+
+            
+            <div id="hobbies" style="display: none;">
+                <h1><b><u><font size=100%>My Hobbies</font></b></u></h1>
+                <br><br>
+                <h2>
+                <p>Reading</p>
+                <p>Watching Movies</p>
+                <p>Playing Chess</p>
+                <p>Listening to Music</p>
+                </h2>
+            </div>
+
+           
+        </div>
+    </body>
+</html>
