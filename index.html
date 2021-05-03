@@ -7,6 +7,53 @@
         <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,400;1,500&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <style>
+            .typewriter h1 {
+                color: #202033;
+                /* font-family: monospace; */
+                overflow: hidden; /* Ensures the content is not revealed until the animation */
+                border-right: .15em solid transparent; /* The typwriter cursor */
+                white-space: nowrap; /* Keeps the content on a single line */
+                margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+                letter-spacing: .05em; /* Adjust as needed */
+                animation: 
+                typing 3.5s steps(30, end),
+                blink-caret .5s step-end 2.75;
+            }
+
+            p {
+                animation-duration: 3s;
+                animation-name: slidein;
+                }
+
+                @keyframes slidein {
+                from {
+                    margin-left: 100%;
+                    width: 300%;
+                }
+
+                75% {
+                    font-size: 100%;
+                    margin-left: 25%;
+                    width: 150%;
+                }
+
+                to {
+                    margin-left: 0%;
+                    width: 100%;
+                }
+            }
+            /* The typing effect */
+            @keyframes typing {
+                from { width: 0 }
+                to { width: 100% }
+            }
+
+            /* The typewriter cursor effect */
+            @keyframes blink-caret {
+                from, to { border-color: transparent }
+                50% { border-color: orange }
+            }
+
             .checked {
                 color: orange;
             }   
@@ -45,33 +92,171 @@
 
            
 
-            /* Style the top navigation bar */
-            .navbar {
-                overflow: hidden;
-                background-color: #202033;
-            }
-
-            /* Style the navigation bar links */
-            .navbar a {
-                float: right;
-                display: block;
-                color: #E8EAE7;
-                text-align: center;
-                padding: 10px 10px;
-                text-decoration: none;
-            }
-
-            /* Right-aligned link */
-            .navbar a.right {
-                float: right;
-            }
-
-            /* Change color on hover */
-            .navbar a:hover {
-                background-color: #E8EAE7;
+            body
+                {
+                margin: 0;
+                padding: 0;
+                
+                /* make it look decent enough */
+                background: #202033;
                 color: #202033;
-            }
+                
+                
+                overflow-x: hidden; /* needed because hiding the menu on the right side is not perfect,  */
+                }
 
+                a
+                {
+                text-decoration: solid underline purple 4px;
+                color: #E8EAE7;
+                
+                transition: color 0.3s ease;
+                }
+
+                a:hover
+                {
+                color: orange;
+                }
+
+                #menuToggle
+                {
+                display: block;
+                position: absolute;
+                top: 50px;
+                right: 50px;
+                
+                z-index: 1;
+                
+                -webkit-user-select: none;
+                user-select: none;
+                }
+
+                #menuToggle input
+                {
+                display: block;
+                width: 40px;
+                height: 32px;
+                position: absolute;
+                top: -7px;
+                left: -5px;
+                
+                cursor: pointer;
+                
+                opacity: 0; /* hide this */
+                z-index: 2; /* and place it over the hamburger */
+                
+                -webkit-touch-callout: none;
+                }
+
+                /*
+                * Just a quick hamburger
+                */
+                #menuToggle span
+                {
+                display: block;
+                width: 33px;
+                height: 4px;
+                margin-bottom: 5px;
+                position: relative;
+                
+                background: #202033;
+                border-radius: 3px;
+                
+                z-index: 1;
+                
+                transform-origin: 4px 0px;
+                
+                transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+                            background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+                            opacity 0.55s ease;
+                }
+
+                #menuToggle span:first-child
+                {
+                transform-origin: 0% 0%;
+                }
+
+                #menuToggle span:nth-last-child(2)
+                {
+                transform-origin: 0% 100%;
+                }
+
+                /* 
+                * Transform all the slices of hamburger
+                * into a crossmark.
+                */
+                #menuToggle input:checked ~ span
+                {
+                opacity: 1;
+                transform: rotate(45deg) translate(-2px, -1px);
+                background: #E8EAE7;
+                }
+
+                /*
+                * But let's hide the middle one.
+                */
+                #menuToggle input:checked ~ span:nth-last-child(3)
+                {
+                opacity: 0;
+                transform: rotate(0deg) scale(0.2, 0.2);
+                }
+
+                /*
+                * Ohyeah and the last one should go the other direction
+                */
+                #menuToggle input:checked ~ span:nth-last-child(2)
+                {
+                opacity: 1;
+                transform: rotate(-45deg) translate(0, -1px);
+                }
+
+                /*
+                * Make this absolute positioned
+                * at the top left of the screen
+                */
+                #menu
+                {
+                position: absolute;
+                width: 300px;
+                margin: -100px 0 0 0;
+                padding: 50px;
+                padding-top: 125px;
+                right: -100px;
+                
+                background: #202033;
+                list-style-type: none;
+                -webkit-font-smoothing: antialiased;
+                /* to stop flickering of text in safari */
+                
+                transform-origin: 0% 0%;
+                transform: translate(100%, 0);
+                
+                transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+                }
+
+                #menu li
+                {
+                padding: 10px 0;
+                font-size: 22px;
+                }
+
+                /*
+                * And let's fade it in from the left
+                */
+                #menuToggle input:checked ~ ul
+                {
+                transform: none;
+                opacity: 1;
+                }
+
+                @media screen and (max-width: 768px) {
+                #menu {
+                    transform: none;
+                    opacity: 0;
+
+                    transition: opacity 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+                }
+                }
 
         </style>
         <script>
@@ -91,20 +276,31 @@
     </head>
     <body  class="mypage">
         <div>
-            <div class="navbar">
-                <a href="mailto:amrutanshutyagi@gmail.com" style="float: left;"><img src="gmail.png" width="25px"></a>
-                <a href="https://www.instagram.com/amruxiii/" style="float: left;"><img src="instagram.png" width="25px"></a>
-                <a href="https://github.com/radarxy" style="float: left;"><img src="github.png" width="25px"></a>
-                <a href="#" onclick="show('skills', 'about', 'hobbies');">Skills</a>
-                <a href="#" onclick="show('hobbies', 'about', 'skills');">My Hobbies</a>
-                <a href="#" onclick="show('about', 'skills', 'hobbies');">About Me</a>
-            </div>
+            <nav role='navigation'>
+                <div id="menuToggle">
+                  
+                  <input type="checkbox" />
+                  
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  
+                  <ul id="menu">
+                    <a href="#" onclick="show('skills', 'about', 'hobbies');">Skills<br><br></a>
+                    <a href="#" onclick="show('hobbies', 'about', 'skills');">Hobbies<br><br></a>
+                    <a href="#" onclick="show('about', 'skills', 'hobbies');">About Me<br><br></a>
+                  </ul>
+                </div>
+              </nav>
 
             <div id="about">
                 <h2>
                     <br><br><img src="dsc-1.jpg" width="230px" class="rounded-corners" style="border: 5px solid #202033;">
                 </h2>
-                <h1><font style= "color:#202033"> Amrutanshu Tyagi</font></h1>
+                <h1><font style= "color:#202033" size= 5%><div class="typewriter">
+                <h1>Amrutanshu Tyagi</h1>
+                </div></font></h1>
+                
                 <font size=4% style= "color:#202033"> 
                     <i>   
                     <p>Hello there, I am a 18yo freshman at NSUT.</p>
@@ -133,7 +329,7 @@
                     <span class="fa fa-star checked"></span>
                     <span class="fa fa-star"></span>
                 </p>
-                <p><a href="https://lichess.org/@/radarxy">Chess</a>    &nbsp;
+                <p>Chess    &nbsp;
                     <span class="fa fa-star checked"></span>
                     <span class="fa fa-star checked"></span>
                     <span class="fa fa-star checked"></span>
@@ -147,7 +343,7 @@
                     <span class="fa fa-star"></span>
                     <span class="fa fa-star"></span>
                 </p>
-                <p><a href="https://soundcloud.com/amruxiii">Producing Music</a> &nbsp;
+                <p>Producing Music &nbsp;
                     <span class="fa fa-star checked"></span>
                     <span class="fa fa-star checked"></span>
                     <span class="fa fa-star checked"></span>
